@@ -1,0 +1,23 @@
+{
+  "Administration": 
+    {
+      "CompanyList": [
+        {"compId" : "Company Id"},
+        {"compName" : "Company Name"},  
+        {"isParent" : "Parent"},  
+        {"isActive" : "Status"},  
+        {"modifiedBy" : "Modified By"},  
+        {"modifiedDate" : "Modified Date"}
+      ],
+      "UserList": [
+        "User Id",
+        "User Name",
+        "Company Name",
+        "Email",
+        "Tel No",
+        "Status",
+        "Modified By",
+        "Modified Date"
+      ]
+    }  
+}

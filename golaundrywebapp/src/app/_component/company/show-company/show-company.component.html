@@ -1,0 +1,15 @@
+
+<div class="contentAndNav">
+    <div class="panel">
+      <h2 class="color-primary-04 bg-primary-03">List Company</h2>
+      <div class="mod--theme-secondary">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <app-gridview [passModuleName]="'Administration'" [passSubModuleName]="'CompanyList'"
+            [passColumnHide]="'0'" [passIsCheckBoxRequired]="false" [passColumnWidth]="',40%,12.5%,12.5%,12.5%,12.5%,'"
+            [passColumnNoSort] = "','" [passDataSource]="CompanyList"></app-gridview>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,57 @@
+<!-- <p>gridview works!</p> -->
+
+<table id="table_0" class="table tableSet" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+            <ng-container *ngIf="passIsCheckBoxRequired">
+                <th></th>
+            </ng-container>
+            <ng-container *ngFor="let item of getSourceArrayObjProp(passDataSource); let i = index">
+                <ng-container *ngIf="isObjectContainKey(item, HeaderList)">
+                    <ng-container *ngIf="isObjectColHide(i); else tmpColNotHide">
+                        <th style="display: none">{{getColHeadLabel(item)}}</th>
+                    </ng-container>
+                    <ng-template #tmpColNotHide>
+                        <th valign="top" (style)="getColWidth(i)">{{getColHeadLabel(item)}}</th>
+                    </ng-template>
+                </ng-container>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody>    
+        <ng-container *ngFor="let data of passDataSource; let j = index">
+            <tr>
+                <ng-container *ngIf="passIsCheckBoxRequired">
+                    <td><input type="checkbox" name="tdCheckBox" class="clsCheckBox" (row)="j" /></td>
+                </ng-container>
+                <ng-container *ngFor="let rowItem of getSourceArrayObjProp(passDataSource); let k = index">
+                    <ng-container *ngIf="isObjectColHide(k); else tmpColBodyNotHide">
+                        <ng-container *ngIf="isContainsSubString(rowItem, 'date') ? tempDateHide : tempDefHide"></ng-container>
+                        <ng-template #tempDateHide>
+                            <td class="text-left" style="display:none">{{dateTimeDisplayFormat(data[rowItem])}}</td>
+                        </ng-template>
+                        <ng-template #tempDefHide>
+                            <td class="text-left" style="display:none">{{data[rowItem]}}</td>
+                        </ng-template> 
+                    </ng-container>
+                    <ng-template #tmpColBodyNotHide>
+                        <ng-container *ngIf="isContainsSubString(rowItem, 'date'); else tempIsActive">
+                            <td class="text-left">{{dateTimeDisplayFormat(data[rowItem])}}</td>
+                        </ng-container>
+                       <!--  <ng-template #tempIsActive>
+                            <td class="text-left">{{data[rowItem]}}</td>
+                        </ng-template> -->
+                       <ng-template #tempIsActive>
+                            <ng-container *ngIf="isContainsSubStringArray(rowItem); else tempDef">
+                                <td class="text-left">{{convertStatusToStr(data[rowItem])}}</td>
+                            </ng-container>
+                        </ng-template>
+                        <ng-template #tempDef>
+                            <td class="text-left">{{data[rowItem]}}</td>
+                        </ng-template> 
+                    </ng-template>
+                </ng-container>
+            </tr>
+        </ng-container>  
+    </tbody>
+</table>

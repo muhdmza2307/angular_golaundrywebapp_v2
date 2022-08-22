@@ -1,0 +1,7 @@
+<!-- <ng-container *ngIf="!isComparedRoute(); else tmpComparedRoute"> -->
+<ng-container *ngIf="login.isLoggedIn(); else tmpComparedRoute">
+    <app-navbar></app-navbar>
+</ng-container>
+<ng-template #tmpComparedRoute>
+    <router-outlet></router-outlet>
+</ng-template>
